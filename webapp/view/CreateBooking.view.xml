@@ -1,0 +1,66 @@
+<mvc:View
+    controllerName="zsd031hoteldetail.controller.CreateBooking"
+	xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:semantic="sap.f.semantic"
+	xmlns:mvc="sap.ui.core.mvc">
+
+	<semantic:SemanticPage
+		id="createPage"
+		busy="{detailView>/busy}"
+        showFooter="true"
+		busyIndicatorDelay="{detailView>/delay}">
+		<semantic:titleHeading>
+			<Title
+                id="createBookingTitle"
+				text="Create Booking"
+				level="H2"/>
+		</semantic:titleHeading>
+		<semantic:content>
+            <f:SimpleForm id="SimpleFormChange354wide"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false">
+			<f:content>
+			    <Label text="Name" />
+				<Input id="bookingName" value="{/booking/Name}" />
+                <Label text="Firstname" />
+				<Input id="bookingFirstname" value="{/booking/Firstname}" />
+                <Label text="Startdate" />
+                <DatePicker
+                    id="startDate"
+                    valueFormat="yyyy.MM.dd"
+                    placeholder="Enter Date"
+                    change="handleChange"
+                    value="{/booking/Startdate}"
+                    class="sapUiSmallMarginBottom"/>
+                   
+                <Label text="Nights" />
+				<Input id="nights" type="Number" value="{/booking/Nights}" />
+                <Label text="Email" />
+				<Input id="Email" value="{/booking/Email}" />
+			</f:content>
+		</f:SimpleForm>
+		</semantic:content>
+		<semantic:footerCustomActions>
+			<Button text="Save" id="createBookingButton" press=".onCreatePressed"/>
+			<Button text="Cancel" id="cancelBookingButton" press="navToDetail" />
+		</semantic:footerCustomActions>
+	</semantic:SemanticPage>
+
+</mvc:View>
+

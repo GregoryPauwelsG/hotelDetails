@@ -1,0 +1,171 @@
+{
+  "_version": "1.32.0",
+  "sap.app": {
+    "id": "zsd031hoteldetail",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZSD_031_HOTEL_GW_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.97.0",
+      "libs": {
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "zsd031hoteldetail.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "zsd031hoteldetail.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+            "name": "Detail",
+            "pattern": "Detail/{hotelId}",
+            "target": [
+              "Detail"
+            ]
+          },
+          {
+            "name": "CreateBooking",
+            "pattern": "CreateBooking/{hotelId}",
+            "target": [
+              "CreateBooking"
+            ]
+          },
+          {
+            "name": "CreateContact",
+            "pattern": "CreateContact/{hotelId}",
+            "target": [
+              "CreateContact"
+            ]
+          },
+          {
+            "name": "UpdateBooking",
+            "pattern": "UpdateBooking/{bookingId}",
+            "target": [
+              "UpdateBooking"
+            ]
+          },
+          {
+            "name": "UpdateContact",
+            "pattern": "UpdateContact/{contactId}",
+            "target": [
+              "UpdateContact"
+            ]
+          }
+      ],
+      "targets": {
+        "TargetApp": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "App",
+          "viewName": "App"
+        },        
+        "Detail": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "detail",
+            "viewName": "Detail"
+          },
+          "CreateBooking": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "createBooking",
+            "viewName": "CreateBooking"
+          },
+          "CreateContact": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "createContact",
+            "viewName": "CreateContact"
+          },
+          "UpdateBooking": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "updateBooking",
+            "viewName": "UpdateBooking"
+          },
+          "UpdateContact": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "updateContact",
+            "viewName": "UpdateContact"
+          }
+      }
+    },
+    "rootView": {
+      "viewName": "zsd031hoteldetail.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+<mvc:View
+    controllerName="zsd031hoteldetail.controller.UpdateContact"
+	xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:semantic="sap.f.semantic"
+	xmlns:mvc="sap.ui.core.mvc">
+
+	<semantic:SemanticPage
+		id="createPage"
+		busy="{detailView>/busy}"
+        showFooter="true"
+		busyIndicatorDelay="{detailView>/delay}">
+		<semantic:titleHeading>
+			<Title
+                id="updateContactTitle"
+				text="Update Contact"
+				level="H2"/>
+		</semantic:titleHeading>
+		<semantic:headerContent>
+		</semantic:headerContent>
+		<semantic:content>
+            <f:SimpleForm id="SimpleFormChange354wide"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false">
+			<f:content>
+			    <Label text="Name" />
+				<Input id="bookingName" value="{/toUpdateContact/Name}" />
+                <Label text="Firstname" />
+				<Input id="bookingFirstname" value="{/toUpdateContact/Firstname}" />
+                <Label text="Email" />
+				<Input id="Email" value="{/toUpdateContact/Email}" />
+			</f:content>
+		</f:SimpleForm>
+		</semantic:content>
+        <semantic:deleteAction>
+            <semantic:DeleteAction id="deleteBookingButton"
+                    press=".onDeletePressed" />
+        </semantic:deleteAction>
+        <semantic:footerCustomActions>
+			<Button text="Save" id="editContactButton" press=".onUpdatePressed"/>
+			<Button text="Cancel" id="cancelButton" press="navToDetail" />
+		</semantic:footerCustomActions>
+	</semantic:SemanticPage>
+
+</mvc:View>

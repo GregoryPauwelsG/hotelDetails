@@ -1,0 +1,1 @@
+sap.ui.define(["./BaseController","sap/ui/core/mvc/Controller","sap/ui/core/routing/History","sap/ui/model/json/JSONModel"],function(o,e){"use strict";return o.extend("zsd031hoteldetail.controller.App",{onInit:function(){}})});

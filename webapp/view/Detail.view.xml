@@ -1,0 +1,124 @@
+<mvc:View
+    controllerName="zsd031hoteldetail.controller.Detail"
+    xmlns:m="sap.m"
+    xmlns="sap.uxap"
+    xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:semantic="sap.f.semantic"
+	xmlns:mvc="sap.ui.core.mvc">
+
+    <semantic:SemanticPage
+		id="detailPage"
+		busy="{detailView>/busy}"
+        showFooter="true"
+		busyIndicatorDelay="{detailView>/delay}">
+		<semantic:titleHeading>
+			<m:Title
+                id="detailTitle"
+				text="{/hotel/Name}"
+				level="H2"/>
+		</semantic:titleHeading>
+		<semantic:headerContent>
+        	<m:ObjectAttribute title="Name" text="{/hotel/Name}"/>
+            <m:ObjectAttribute title="Adress" text="{/hotel/Country} - {/hotel/City} - {/hotel/Street}"/>
+		    <m:Label text="Description:" />
+            <m:Input id="hotelDescriptionInput" liveChange=".onInputChange" value="{/hotel/Description}"/>
+		</semantic:headerContent>
+            <semantic:content>
+             <m:VBox>
+            <m:items>
+            <m:Panel class="sapUiResponsiveMargin" width="auto" headerText="Bookings">
+                <m:content>
+                <m:List
+                    id="bookingList"
+                    width="auto"
+                    class="sapFDynamicPageAlignContent"
+                    items="{/bookings}"
+                    busyIndicatorDelay="{listView>/delay}"
+                    noDataText="{listView>/noDataText}"
+                    mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
+                    growing="true"
+                    growingScrollToLoad="true"
+                    updateFinished=".onUpdateFinished"
+                    selectionChange=".onBookingChange">
+
+				<m:headerToolbar>
+					<m:OverflowToolbar>
+					<m:ToolbarSpacer/>
+						<m:Button
+					        text="Add"
+						    ariaDescribedBy="acceptButtonDescription genericButtonDescription"
+							id="addBookingButton"
+                            press=".addBookingPressed"
+							type="Transparent"/>
+
+					</m:OverflowToolbar>
+				</m:headerToolbar>
+				<m:items>
+					<m:ObjectListItem
+                    	type="Navigation"
+						press=".onBookingChange"
+                        number="{Nights}"
+                        numberUnit="Nights"
+						title="{Firstname} {Name} - 
+                            {path: 'Startdate', type: 'sap.ui.model.type.Date',formatOptions: { style: 'short', strictParsing: true, relative: false }}" >
+                        <m:ObjectAttribute text="{Email}" />
+                    </m:ObjectListItem>
+				</m:items>
+			</m:List>
+             </m:content>
+            </m:Panel>
+            <m:Panel class="sapUiResponsiveMargin" width="auto" headerText="Contacts">
+            <m:content>
+            <m:List
+				id="contactList"
+				width="auto"
+				class="sapFDynamicPageAlignContent"
+				items="{/contacts}"
+				busyIndicatorDelay="{listView>/delay}"
+				noDataText="{listView>/noDataText}"
+				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
+				growing="true"
+				growingScrollToLoad="true"
+				updateFinished=".onUpdateFinished"
+				selectionChange=".onContactChange">
+
+				<m:headerToolbar>
+					<m:OverflowToolbar>
+					<m:ToolbarSpacer/>
+						<m:Button
+					        text="Add"
+						    ariaDescribedBy="acceptButtonDescription genericButtonDescription"
+							id="addContactButton"
+                            press=".addContactPressed"
+							type="Transparent"/>
+
+					</m:OverflowToolbar>
+				</m:headerToolbar>
+				<m:items>
+					<m:ObjectListItem
+						type="Navigation"
+						press=".onContactChange"
+						title="{Firstname} {Name}"
+                        number="{
+                            parts:[{path:'Price'},{path:'CurrencyCode'}],
+                            type: 'sap.ui.model.type.Currency',
+                            formatOptions: {showMeasure: true}
+                        }">
+                        <m:ObjectAttribute text="{Email}" />
+                        </m:ObjectListItem>
+				</m:items>
+			</m:List>
+             </m:content>
+        </m:Panel>
+         </m:items>
+    </m:VBox>
+
+		</semantic:content>
+        	<semantic:footerCustomActions>
+                <m:Button text="Save" id="editDescriptionButton" enabled="false" press=".onUpdatePressed"/>
+                <m:Button text="Cancel" id="cancelEditButton" press=".onCancelPressed" />
+		</semantic:footerCustomActions>
+    </semantic:SemanticPage>
+</mvc:View>

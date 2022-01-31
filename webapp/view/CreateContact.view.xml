@@ -1,0 +1,55 @@
+<mvc:View
+    controllerName="zsd031hoteldetail.controller.CreateContact"
+	xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:semantic="sap.f.semantic"
+	xmlns:mvc="sap.ui.core.mvc">
+
+	<semantic:SemanticPage
+		id="createPage"
+        showFooter="true"
+		busy="{detailView>/busy}"
+		busyIndicatorDelay="{detailView>/delay}">
+		<semantic:titleHeading>
+			<Title
+                id="createContactTitle"
+				text="Create Contact"
+				level="H2"/>
+		</semantic:titleHeading>
+		<semantic:content>
+            <f:SimpleForm id="SimpleFormChange354wide"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false">
+			<f:content>
+			    <Label text="Name" />
+				<Input id="bookingName" value="{/contact/Name}" />
+                <Label text="Firstname" />
+				<Input id="bookingFirstname" value="{/contact/Firstname}" />
+                <Label text="Startdate" />
+                <Label text="Email" />
+				<Input id="Email" value="{/contact/Email}" />
+			</f:content>
+		</f:SimpleForm>
+		</semantic:content>
+		<semantic:footerCustomActions>
+			<Button text="Save" id="createContactButton" press=".onCreatePressed"/>
+			<Button text="Cancel" id="cancelContactButton" press="navToDetail" />
+		</semantic:footerCustomActions>
+	</semantic:SemanticPage>
+
+</mvc:View>
